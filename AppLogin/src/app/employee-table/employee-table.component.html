@@ -1,0 +1,67 @@
+<button (click)="logout()" mat-raised-button color="primary"> Sign-Out </button>
+
+<h1 style="text-align: center; text-decoration: dashed;"> DASHBOARD </h1>
+
+<br>
+<!-- Defined MATERIAL SLIDER -->
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<h1 style="text-align: center"> PRODUCT MATERAIL TABLE </h1>
+<!-- ------------------------------------------------------------- -->
+<div class="container">
+    
+    
+
+
+    <div class="search-container">
+        <mat-form-field appearance="fill">
+        <mat-label> Search </mat-label>
+        <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)" > 
+      </mat-form-field>
+    </div>
+    
+    <!-- -------------------------------------------------->
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+            <!-- <ul>
+                <li *ngFor="let element of data"> </li>
+            </ul> -->
+
+        <!-- ID -->
+        <ng-container matColumnDef="p_ID">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> PRODUCT ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.p_ID}} </td>
+        </ng-container>
+
+        <!-- Name -->
+        <ng-container matColumnDef="p_Name">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> PRODUCT NAME </th>
+            <td mat-cell *matCellDef="let element"> {{element.p_Name}} </td>
+        </ng-container>
+
+        <!-- User name -->
+        <ng-container matColumnDef="p_Price">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> PRODUCT PRICE </th>
+            <td mat-cell *matCellDef="let element"> {{element.p_Price}} </td>
+        </ng-container>
+
+        <!-- Email -->
+        <ng-container matColumnDef="p_Quantity">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> PRODUCT QUANTITY </th>
+            <td mat-cell *matCellDef="let element"> {{element.p_Quantity}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator #paginator
+              [pageSize]="2" showFirstLastButtons=""
+              [pageSizeOptions]="[10, 25, 50, 100]"
+              aria-label="Select page">
+</mat-paginator>
+</div>
+
+<!-- --------------------------------------------------------------------- -->
+
+
